@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+ <!---------Navigation Bar---------->
+
+  <nav class="navbar">
+    <div class="menuicon">&#9776;</div>
+    <div class="title"><h1>Dashboard</h1></div>
+    
+  </nav>
+
+
+  <!---------Container---------->
+  <div class="container">
+    <h1>Hey Manager!</h1>
+
+  
+     <!---------Status Tiles---------->
+    <div class="Statustile">
+      <!-- Machine that are OK-->
+      <div class="card">
+        <div class="status">Ok</div>
+        <div class="workingfine">
+          <h1>03</h1></div>
+      </div>
+
+      <!-- Machines under warning-->
+      <div class="card">
+        <div class="status">Warning</div>
+        <div class="inwarning"><h1>02</h1></div>
+      </div>
+      <!--Machines under fault-->
+      <div class="card">
+        <div class="status">Fault</div>
+        <div class="underfault"><h1>06</h1></div>
+      </div>
+    </div>
+
+    <!--------List of machines---------->
+    <div class="listofmachines">
+      <h2>List of Machines</h2>
+      <button class="generatebutton">Generate Report</button>
+    </div>
+
+  <!---------Table for list of machines-------->
+    <table>
+      <thead>
+        <tr>
+          <th>Machine Code</th>
+          <th>Machine Name</th>
+          <th>Status</th>
+          <th>Update</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#3454</td>
+          <td>Lathe</td>
+          <td class="warning">Warning</td>
+          <td>Under Repair</td>
+          <td><button class="viewbutton">View</button></td>
+        </tr>
+        <tr>
+          <td>#3453</td>
+          <td>Lathe</td>
+          <td class="ok">OK</td>
+          <td>Working Fine</td>
+          <td><button class="viewbutton">View</button></td>
+        </tr>
+        <tr>
+          <td>#3452</td>
+          <td>Lathe</td>
+          <td class="warning">Warning</td>
+          <td>Under Repair</td>
+          <td><button class="viewbutton">View</button></td>
+        </tr>
+        <tr>
+          <td>#3451</td>
+          <td>Lathe</td>
+          <td class="ok">OK</td>
+          <td>Working Fine</td>
+          <td><button class="viewbutton">View</button></td>
+        </tr>
+        <tr>
+          <td>#3450</td>
+          <td>Lathe</td>
+          <td class="warning">Warning</td>
+          <td>Under Repair</td>
+          <td><button class="viewbutton">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
