@@ -62,3 +62,26 @@ python manage.py runserver
 ```
 Visit `http://127.0.0.1:8000/` in your browser.
 
+
+
+## 🔄 Making Changes and Pushing to GitHub
+
+After making changes to any files in the project (HTML, CSS, Python, etc.), follow these steps:
+
+```bash
+# 1. Check what has changed
+git status
+
+# 2. Stage the changes
+git add .
+
+# 3. Commit the changes
+git commit -m "Describe what you changed"
+
+# 4. Pull any new changes from GitHub before pushing
+git pull origin main --rebase
+
+# 5. Push your changes to GitHub
+git push origin main
+```
+
