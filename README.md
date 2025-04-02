@@ -29,10 +29,11 @@ WebAppDevN/
 └── README.md
 ```
 
-inside WebAppDevN/core/templates/core ---> all the html files placed here.
-inside WebAppDevN/core/static/css ---> all the css files placed here.
-inside WebAppDevN/core/static/js ---> all the javascript files placed here.
-inside WebAppDevN/core/static/images ---> all the images files placed here.
+> 📌 inside `WebAppDevN/core/templates/core`  → all the HTML files are placed here  
+> 📌 inside `WebAppDevN/core/static/css`      → all the CSS files are placed here  
+> 📌 inside `WebAppDevN/core/static/js`       → all the JavaScript files are placed here  
+> 📌 inside `WebAppDevN/core/static/images`   → all the image files are placed here
+
 
 ## 🛠️ Setup Instructions
 
