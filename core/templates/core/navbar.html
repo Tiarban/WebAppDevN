@@ -1,0 +1,25 @@
+<!-- templates/core/navbar.html -->
+<nav class="navbar">
+    <div class="navbar-left">
+      <span class="menuicon" onclick="openMenu()">☰</span>
+      <span class="title">Dashboard</span>
+    </div>
+  </nav>
+  
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="{% url 'manager' %}">Dashboard</a>
+    <a href="{% url 'assgin-tech' %}">Assign Technician</a>
+    <a href="{% url 'raise-ticket' %}">Raise Ticket</a>
+  </div>
+  
+  <script>
+    function openMenu() {
+      document.getElementById("sidebar").style.left = "0";
+    }
+    function closeMenu() {
+      document.getElementById("sidebar").style.left = "-250px";
+    }
+  </script>
+  

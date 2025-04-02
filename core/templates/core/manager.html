@@ -1,0 +1,30 @@
+{# templates/dashboard.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/manager.css' %}">{% endblock %}
+{% block content %}
+
+<h1>Hey Manager!</h1>
+<div class="Statustile">
+    <div class="card"><div class="status">Ok</div><div class="workingfine"><h1>03</h1></div></div>
+    <div class="card"><div class="status">Warning</div><div class="inwarning"><h1>02</h1></div></div>
+    <div class="card"><div class="status">Fault</div><div class="underfault"><h1>06</h1></div></div>
+</div>
+<div class="listofmachines">
+    <h2>List of Machines</h2>
+    <button class="generatebutton">Generate Report</button>
+</div>
+<table>
+    <thead>
+        <tr><th>Machine Code</th><th>Machine Name</th><th>Status</th><th>Update</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>#3454</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td><button class="viewbutton">View</button></td></tr>
+        <tr><td>#3453</td><td>Lathe</td><td class="ok">OK</td><td>Working Fine</td><td><button class="viewbutton">View</button></td></tr>
+        <tr><td>#3452</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td><button class="viewbutton">View</button></td></tr>
+        <tr><td>#3451</td><td>Lathe</td><td class="ok">OK</td><td>Working Fine</td><td><button class="viewbutton">View</button></td></tr>
+        <tr><td>#3450</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td><button class="viewbutton">View</button></td></tr>
+    </tbody>
+</table>
+{% endblock %}
