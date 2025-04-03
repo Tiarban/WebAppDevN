@@ -5,6 +5,8 @@ def manager(request): return render(request, 'core/manager.html')
 def assign_tech(request): return render(request, 'core/assign-tech.html')
 def raise_ticket(request): return render(request, 'core/raise-ticket.html')
 
+#test
+
 
 
 
