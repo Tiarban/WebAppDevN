@@ -1,0 +1,86 @@
+{# templates/dashboard.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/machinedetails.css' %}">{% endblock %}
+{% block content %}
+
+<header>
+    <div class="logo">☰</div>
+    <h1>Machine Status</h1>
+    <div class="account"><img src="{% static 'Icons/Account Icon.png' %}" alt="Account" height="32px" width="32px"></div>
+  </header>
+
+  <main>
+    <section class="machine-details">
+      <div class="image">
+      <img src="{% static 'images/Machine.png' %}" alt="machineimage">">
+      </div>
+      <div class="details">
+        <h2>Machine Name</h2>
+        <p>
+          The PFM-5000 is a high-performance automatic machine designed for the efficient and consistent production of high-quality frying pans. Engineered for precision and speed, it handles the entire process from metal sheet forming to non-stick coating application. Perfect for large-scale cookware manufacturing units aiming to boost productivity and maintain product consistency.
+        </p>
+        <p><strong>Status</strong><br><span class="status-ok">OK</span></p>
+        <p><strong>Update</strong><br><span class="update-text">Working Fine</span></p>
+
+        <div class="addwarning">
+          <button>Add Warning</button>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section class="history">
+      <div class="tableheader">
+
+        <h3>History of Faults</h3>
+      <div class="raise-ticket">
+        <button>Raise Ticket</button>
+      </div>
+
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Fault Code</th>
+            <th>Machine Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#FC252634</td>
+            <td>Lathe</td>
+            <td>03/02/2025</td>
+            <td class="status-ok">Ok</td>
+            <td>Resolved</td>
+            <td><button class="view-btn">View</button></td>
+          </tr>
+          <tr>
+            <td>#FC252634</td>
+            <td>Lathe</td>
+            <td>03/02/2025</td>
+            <td class="status-ok">Ok</td>
+            <td>Resolved</td>
+            <td><button class="view-btn">View</button></td>
+          </tr>
+          <tr>
+            <td>#FC252634</td>
+            <td>Lathe</td>
+            <td>03/02/2025</td>
+            <td class="status-ok">Ok</td>
+            <td>Resolved</td>
+            <td><button class="view-btn">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  {% endblock %}
