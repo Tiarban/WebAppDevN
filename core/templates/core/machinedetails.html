@@ -4,13 +4,9 @@
 {% block title %}Dashboard{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/machinedetails.css' %}">{% endblock %}
 {% block content %}
+{% include ‘core/navbar.html’ %}
 
 
-<header>
-    <div class="logo">☰</div>
-    <h1>Machine Status</h1>
-    <div class="account"><img src="{% static 'Icons/Account Icon.png' %}" alt="Account" height="32px" width="32px"></div>
-  </header>
 
   <main>
     <section class="machine-details">
