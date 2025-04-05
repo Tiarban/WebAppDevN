@@ -4,6 +4,8 @@
 {% block title %}Raise a Fault Ticket{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/raise-ticket.css' %}">{% endblock %}
 {% block content %}
+{% include 'core/navbar.html' %}
+
 <h2>Raise a Fault Ticket</h2>
 <form id="faultForm">
     <div class="form-group">

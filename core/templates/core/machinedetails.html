@@ -5,6 +5,7 @@
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/machinedetails.css' %}">{% endblock %}
 {% block content %}
 
+
 <header>
     <div class="logo">☰</div>
     <h1>Machine Status</h1>
@@ -36,9 +37,10 @@
       <div class="tableheader">
 
         <h3>History of Faults</h3>
-      <div class="raise-ticket">
-        <button>Raise Ticket</button>
-      </div>
+        <div class="raise-ticket">
+          <a href="{% url 'raise-ticket' %}" class="raise-ticket-btn">Raise Ticket</a>
+        </div>
+        
 
       </div>
       

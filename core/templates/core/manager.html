@@ -4,6 +4,8 @@
 {% block title %}Dashboard{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/manager.css' %}">{% endblock %}
 {% block content %}
+{% include 'core/navbar.html' %}
+
 
 <h1>Hey Manager!</h1>
 <div class="Statustile">
@@ -20,11 +22,51 @@
         <tr><th>Machine Code</th><th>Machine Name</th><th>Status</th><th>Update</th><th>Warning</th><th>Action</th></tr>
     </thead>
     <tbody>
-        <tr><td>#3454</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td>Don't Use</td><td><button class="viewbutton">View</button></td></tr>
-        <tr><td>#3453</td><td>Lathe</td><td class="ok">OK</td><td>Working Fine</td><td>Don't Use</td><td><button class="viewbutton">View</button></td></tr>
-        <tr><td>#3452</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td>Don't Use</td><td><button class="viewbutton">View</button></td></tr>
-        <tr><td>#3451</td><td>Lathe</td><td class="ok">OK</td><td>Working Fine</td><td>Don't Use</td><td><button class="viewbutton">View</button></td></tr>
-        <tr><td>#3450</td><td>Lathe</td><td class="warning">Warning</td><td>Under Repair</td><td>Don't Use</td><td><button class="viewbutton">View</button></td></tr>
+        <tr>
+            <td>#3454</td>
+            <td>Lathe</td>
+            <td class="warning">Warning</td>
+            <td>Under Repair</td>
+            <td>Don't Use</td>
+            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+        </tr>
+
+        <tr>
+            <td>#3454</td>
+            <td>Lathe</td>
+            <td class="warning">Warning</td>
+            <td>Under Repair</td>
+            <td>Don't Use</td>
+            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+        </tr>
+
+        <tr>
+            <td>#3454</td>
+            <td>Lathe</td>
+            <td class="warning">Warning</td>
+            <td>Under Repair</td>
+            <td>Don't Use</td>
+            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+        </tr>
+        
+        <tr>
+            <td>#3454</td>
+            <td>Lathe</td>
+            <td class="warning">Warning</td>
+            <td>Under Repair</td>
+            <td>Don't Use</td>
+            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+        </tr>
+        
+        <tr>
+            <td>#3454</td>
+            <td>Lathe</td>
+            <td class="warning">Warning</td>
+            <td>Under Repair</td>
+            <td>Don't Use</td>
+            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+        </tr>
+        
     </tbody>
 </table>
 {% endblock %}

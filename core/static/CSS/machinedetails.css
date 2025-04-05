@@ -73,15 +73,21 @@
     margin-bottom: 10px;
   }
   
-  .raise-ticket button {
- 
+  .raise-ticket-btn {
     padding: 10px 20px;
     background-color: black;
     color: white;
     border: none;
-    cursor: pointer;
     border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
   }
+  
+  .raise-ticket-btn:hover {
+    background-color: #333;
+  }
+  
 
   .addwarning button {
     padding: 10px 20px;
