@@ -1,0 +1,61 @@
+.container {
+    max-width: 450px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #c00000;
+    text-align: center;
+  }
+  .form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .form input,
+  .form textarea {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .subbtn {
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 160px;
+    cursor: pointer;
+  }
+  
+  .canbtn {
+    background: #ffffff;
+    color: #000000;
+    border: solid;
+    width: 160px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 26px;
+  }

@@ -1,0 +1,26 @@
+{# templates/raise-ticket.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Raise a Fault Ticket{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/addwarning.css' %}">{% endblock %}
+{% block content %}
+{% include 'core/navbar.html' %}
+
+
+<div class="container">
+    <h2>Add Warning</h2>
+    <form class="form">
+      <label for="tagwarning">Warning Tag</label><br>
+      <input type="text" id="tagwarning" name="tagwarning" placeholder="e.g. Overheating Detected" required>
+  
+      <label for="warningDesc">Description (optional)</label><br>
+      <textarea id="warningDesc" name="warningDesc" rows="4" placeholder="Add more context..."></textarea>
+  
+      <div class="buttons">
+        <button type="submit" class="subbtn">Add Warning</button>
+        <button type="reset" class="canbtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  {% endblock %}
