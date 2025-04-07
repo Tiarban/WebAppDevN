@@ -1,27 +1,35 @@
-<!-- templates/core/navbar.html -->
+{# templates/core/navbar.html #}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/menu-bar.css' %}">
+
 <nav class="navbar">
-    <div class="navbar-left">
-      <span class="menuicon" onclick="openMenu()">☰</span>
-      <span class="title">Dashboard</span>
-      <span class="account"><img src="{% static 'Icons/Account Icon.png' %}" alt="Account" height="32px" width="32px"></span>
-    </div>
-  </nav>
-  
-  
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <span class="close-btn" onclick="closeMenu()">&times;</span>
-    <a href="{% url 'manager' %}">Dashboard</a>
-    <a href="{% url 'assgin-tech' %}">Assign Technician</a>
-    <a href="{% url 'raise-ticket' %}">Raise Ticket</a>
+  <div class="navbar-left">
+    <span class="menuicon" onclick="openMenu()">☰</span>
+    <span class="title">{% block navbar_title %}{{ navbar_title|default:"Dashboard" }}{% endblock %}</span>
   </div>
-  
-  <script>
-    function openMenu() {
-      document.getElementById("sidebar").style.left = "0";
-    }
-    function closeMenu() {
-      document.getElementById("sidebar").style.left = "-250px";
-    }
-  </script>
-  
+  <div class="navbar-right">
+    <img src="{% static 'Icons/Account Icon.png' %}" alt="Account" class="account-icon">
+  </div>
+</nav>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h2>Dashboard</h2>
+    <span class="close-btn" onclick="closeMenu()">×</span>
+  </div>
+  <div class="sidebar-links">
+    <a href="{% url 'manager' %}">Dashboard</a>
+    <a href="{% url 'assign-tech' %}">Assign Technician</a>
+    <a href="{% url 'raise-ticket' %}">Raise Ticket</a>
+    <a href="{% url 'login' %}">Logout</a>
+  </div>
+</div>
+
+<script>
+  function openMenu() {
+    document.getElementById("sidebar").style.left = "0";
+  }
+  function closeMenu() {
+    document.getElementById("sidebar").style.left = "-250px";
+  }
+</script>

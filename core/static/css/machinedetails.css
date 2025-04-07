@@ -1,140 +1,143 @@
+/* machinedetails.css - Detailed styling for machine details page */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  h1{
-    font-size: 20px;
-  }
-  
-  body {
-    background-color: #f7f7f7;
-    color: #222;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    color: white;
-    padding: 10px 20px;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-  }
-  
-  main {
-    padding: 20px 40px;
-  }
-  
-  .machine-details {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .image img {
-    width: 500px;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.5);;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-  }
-  
-  .details {
-    flex: 1;
-  }
-  
-  .details h2 {
-    margin-bottom: 10px;
-  }
-  
-  .details p {
-    margin: 24px 0;
-  }
-  
-  .status-ok {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .update-text {
+h1 {
+  font-size: 20px;
+}
 
-    color: #999;
-  }
-  
-  .raise-ticket {
-    display: inline-flex;
-    text-align: right;
-    margin-bottom: 10px;
-  }
-  
-  .raise-ticket-btn {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .raise-ticket-btn:hover {
-    background-color: #333;
-  }
-  
+body {
+  background-color: #f7f7f7;
+  color: #222;
+  padding-top: 64px; /* Account for fixed navbar */
+}
 
-  .addwarning button {
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .history h3 {
-    display: inline-flex;
-    margin-bottom: 16px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  }
-  .tableheader {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  th {
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 10px 20px;
+}
 
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    background-color: #000;
-    color: white;
-    
-  }
+.logo {
+  font-size: 1.5rem;
+}
 
-  td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .view-btn {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-  }
+main {
+  padding: 20px 40px;
+}
+
+.machine-details {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.image img {
+  width: 500px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.details {
+  flex: 1;
+}
+
+.details h2 {
+  margin-bottom: 10px;
+}
+
+.details p {
+  margin: 24px 0;
+}
+
+.status-ok {
+  color: green;
+  font-weight: bold;
+}
+
+.update-text {
+  color: #999;
+}
+
+.raise-ticket {
+  display: inline-flex;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.raise-ticket-btn {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.raise-ticket-btn:hover {
+  background-color: #333;
+}
+
+.addwarning button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.history h3 {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+
+.tableheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+th {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  background-color: #000;
+  color: white;
+}
+
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.view-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #333;
+}

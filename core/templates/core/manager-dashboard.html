@@ -1,11 +1,11 @@
-{# templates/dashboard.html #}
+{# templates/manager-dashboard.html #}
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Dashboard{% endblock %}
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/manager.css' %}">{% endblock %}
 {% block content %}
 {% include 'core/navbar.html' %}
-
+{% block navbar_title %}Dashboard{% endblock %}
 
 <h1>Hey Manager!</h1>
 <div class="Statustile">
@@ -30,7 +30,6 @@
             <td>Don't Use</td>
             <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
         </tr>
-
         <tr>
             <td>#3454</td>
             <td>Lathe</td>
@@ -39,7 +38,6 @@
             <td>Don't Use</td>
             <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
         </tr>
-
         <tr>
             <td>#3454</td>
             <td>Lathe</td>
@@ -48,7 +46,6 @@
             <td>Don't Use</td>
             <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
         </tr>
-        
         <tr>
             <td>#3454</td>
             <td>Lathe</td>
@@ -57,7 +54,6 @@
             <td>Don't Use</td>
             <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
         </tr>
-        
         <tr>
             <td>#3454</td>
             <td>Lathe</td>
@@ -66,7 +62,6 @@
             <td>Don't Use</td>
             <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
         </tr>
-        
     </tbody>
 </table>
 {% endblock %}

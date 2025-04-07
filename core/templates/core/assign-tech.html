@@ -8,36 +8,39 @@
 
 {% block content %}
 {% include 'core/navbar.html' %}
+{% block navbar_title %}Assign Technician{% endblock %}
 
-<h2>Assign to Technician</h2>
-<form id="assignForm">
-    <div class="form-group">
-        <label for="machine">Machine Name</label>
-        <input type="text" id="machine" placeholder="Enter Machine Name" required>
-    </div>
-    <div class="form-group">
-        <label for="technician">Assign To</label>
-        <select id="technician" required>
-            <option value="">Select Technician</option>
-            <option value="tech1">Technician 1</option>
-            <option value="tech2">Technician 2</option>
-            <option value="tech3">Technician 3</option>
-            <option value="tech4">Technician 4</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="notes">Notes to Technician</label>
-        <textarea id="notes" rows="4" placeholder="Enter notes here..."></textarea>
-    </div>
-    <div class="form-group">
-        <label>Upload Image</label>
-        <input type="file">
-    </div>
-    <div class="buttons">
-        <button type="submit" class="btn submit-btn">Submit</button>
-        <button type="button" class="btn cancel-btn" onclick="resetForm()">Cancel</button>
-    </div>
-</form>
+<div class="container">
+  <h2>Assign to Technician</h2>
+  <form id="assignForm">
+      <div class="form-group">
+          <label for="machine">Machine Name</label>
+          <input type="text" id="machine" placeholder="Enter Machine Name" required>
+      </div>
+      <div class="form-group">
+          <label for="technician">Assign To</label>
+          <select id="technician" required>
+              <option value="">Select Technician</option>
+              <option value="tech1">Technician 1</option>
+              <option value="tech2">Technician 2</option>
+              <option value="tech3">Technician 3</option>
+              <option value="tech4">Technician 4</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="notes">Notes to Technician</label>
+          <textarea id="notes" rows="4" placeholder="Enter notes here..."></textarea>
+      </div>
+      <div class="form-group">
+          <label>Upload Image</label>
+          <input type="file">
+      </div>
+      <div class="buttons">
+          <button type="submit" class="btn submit-btn">Submit</button>
+          <button type="button" class="btn cancel-btn" onclick="resetForm()">Cancel</button>
+      </div>
+  </form>
+</div>
 {% endblock %}
 
 {% block extra_scripts %}

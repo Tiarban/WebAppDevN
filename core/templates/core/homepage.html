@@ -5,29 +5,28 @@
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/homepage.css' %}">{% endblock %}
 {% block content %}
 
+<header class="main-navbar">
+    <div class="logo"><img src="{% static 'Logo/Utensia.png' %}" height="60px" width="60px"></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="{% url 'login' %}"><button class="logbtn">Login</button></a>
+</header>
+
 <section class="Banner">
-   
-    <header class="navbar">
-        <div class="logo"><img src="{% static 'Logo/Utensia.png' %}" height="60px" width="60px"></div>
-       
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <button class="logbtn">Login</button>
-      </header>
     <div class="bannerdetails">
-      <h1>“Precision Tools for Every Kitchen”<br/>Engineered with care. Backed by technology</h1>
+      <h1>"Precision Tools for Every Kitchen"<br/>Engineered with care. Backed by technology</h1>
       <button class="pbutton">View All Products</button>
     </div>
-  </section>
+</section>
 
-  <section class="categories">
+<section class="categories">
     <h2>Product Categories</h2>
     <div class="categorygrid">
       <div class="categorycard">
@@ -44,32 +43,32 @@
       </div>
     </div>
     <button class="sbutton">View All Products</button>
-  </section>
+</section>
 
-  <section class="whychooseus">
+<section class="whychooseus">
     <h2>Why Choose Us?</h2>
     <p>
-      At Utensia Manufacturing, we blend traditional craftsmanship with modern innovation to produce high-quality kitchen utensils trusted by professionals and home chefs alike. With over two decades of experience in precision manufacturing, our commitment to excellence is reflected in every product we create. We adhere to strict ISO-certified standards, ensuring durability, safety, and performance in all our cookware, cutlery, and kitchen tools. What truly sets us apart is our use of smart technology — our integrated Factory Machinery Status & Repair Tracking System keeps our production process running smoothly, minimizing downtime and maximizing consistency. At Utensia, we believe that reliable tools form the foundation of great cooking. That’s why we design with purpose, manufacture with care, and deliver with pride. Choose Utensia Manufacturing — where quality meets innovation in every detail.
+      At Utensia Manufacturing, we blend traditional craftsmanship with modern innovation to produce high-quality kitchen utensils trusted by professionals and home chefs alike. With over two decades of experience in precision manufacturing, our commitment to excellence is reflected in every product we create. We adhere to strict ISO-certified standards, ensuring durability, safety, and performance in all our cookware, cutlery, and kitchen tools. What truly sets us apart is our use of smart technology — our integrated Factory Machinery Status & Repair Tracking System keeps our production process running smoothly, minimizing downtime and maximizing consistency. At Utensia, we believe that reliable tools form the foundation of great cooking. That's why we design with purpose, manufacture with care, and deliver with pride. Choose Utensia Manufacturing — where quality meets innovation in every detail.
     </p>
-  </section>
+</section>
 
-  <section class="contactbanner">
+<section class="contactbanner">
     <h2>Want to join our team or become a partner?</h2>
     <div class="contactbannerbttn">
       <button class="pbutton">Explore Careers</button>
       <button class="sbutton">Contact Us</button>
     </div>
-  </section>
-  <br>
-  <br>
-  <footer>
+</section>
+<br>
+<br>
+<footer>
     <p>&copy; 2025 UTENSIA Manufacturing Inc. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
     <div class="socialmedia">
-      <a href="#"><img src="Icons/Facebook Icon.png" alt="Facebook"></a>
-      <a href="#"><img src="Icons/Instagram icon.png" alt="Instagram"></a>
-      <a href="#"><img src="Icons/LinkedIn Icon.png" alt="LinkedIn"></a>
-      <a href="#"><img src="Icons/Twitter icon.png" alt="Twitter"></a>
+      <a href="#"><img src="{% static 'Icons/Facebook Icon.png' %}" alt="Facebook"></a>
+      <a href="#"><img src="{% static 'Icons/Instagram icon.png' %}" alt="Instagram"></a>
+      <a href="#"><img src="{% static 'Icons/LinkedIn Icon.png' %}" alt="LinkedIn"></a>
+      <a href="#"><img src="{% static 'Icons/Twitter icon.png' %}" alt="Twitter"></a>
     </div>
-  </footer>
+</footer>
 
-  {% endblock %}
+{% endblock %}
