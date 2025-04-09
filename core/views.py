@@ -3,6 +3,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth.models import Group, User 
+from rest_framework import permissions, viewsets
+
+from core.serializers import GroupSerializer, UserSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    #user api endpoint
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class GroupViewSet(viewsets.ModelViewSet):
+    #group api endpoint
+    queryset = Group.objects.all().order_by('name')
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 def homepage(request):
     """Render the homepage"""

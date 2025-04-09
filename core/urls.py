@@ -1,10 +1,17 @@
 # urls.py - Main URL configuration
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+
+from rest_framework import routers
+
 from . import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +22,7 @@ urlpatterns = [
     path('raise-ticket/', views.raise_ticket, name='raise-ticket'),
     path('technician/', views.technician_dashboard, name='technician'),
     path('login/', views.login_view, name='login'),
-
+    path("api/", include(router.urls)),
 ]
 
 # Add static and media URLs in development
