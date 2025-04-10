@@ -79,9 +79,9 @@ git add .
 git commit -m "Describe what you changed"
 
 # 4. Pull any new changes from GitHub before pushing
-git pull origin main --rebase
+git pull
 
 # 5. Push your changes to GitHub
-git push origin main
+git push
 ```
 
