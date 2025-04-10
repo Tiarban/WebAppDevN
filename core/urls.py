@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-# core/urls.py
-from django.urls import path
-=======
 # urls.py - Main URL configuration
 
 from django.contrib import admin
 from django.urls import path, include
->>>>>>> 2ec26a5b8867a6199b67ce2d7a55de2ee365478c
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -22,7 +17,6 @@ urlpatterns = [
     # Authentication URLs
     path('', views.homepage, name='homepage'),
     path('login/', views.login_view, name='login'),
-<<<<<<< HEAD
     path('logout/', views.logout_view, name='logout'),
     
     # Manager URLs
@@ -50,9 +44,7 @@ urlpatterns = [
 
 
 
-=======
     path("api/", include(router.urls)),
->>>>>>> 2ec26a5b8867a6199b67ce2d7a55de2ee365478c
 ]
 
 # Serve media files in development
