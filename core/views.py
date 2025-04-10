@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
+<<<<<<< HEAD
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Count, Q
 from django.utils import timezone
@@ -11,6 +12,25 @@ from .forms import (
     LoginForm, MachineForm, TicketForm, TicketUpdateForm, 
     TechnicianAssignmentForm, MachineWarningForm
 )
+=======
+from django.contrib.auth.models import Group, User 
+from rest_framework import permissions, viewsets
+
+from core.serializers import GroupSerializer, UserSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    #user api endpoint
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class GroupViewSet(viewsets.ModelViewSet):
+    #group api endpoint
+    queryset = Group.objects.all().order_by('name')
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+>>>>>>> 2ec26a5b8867a6199b67ce2d7a55de2ee365478c
 
 # User type checks
 def is_manager(user):
