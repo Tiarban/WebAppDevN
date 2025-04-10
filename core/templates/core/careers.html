@@ -1,0 +1,112 @@
+{# templates/core/careers.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Careers | Utensia{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/careers.css' %}">
+{% endblock %}
+{% block content %}
+
+<header class="main-navbar">
+    <div class="logo"><img src="{% static 'Logo/Utensia.png' %}" height="60px" width="60px"></div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'careers' %}" class="active">Careers</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="{% url 'login' %}"><button class="logbtn">Login</button></a>
+</header>
+
+<section class="careers-hero">
+    <div class="careers-hero-content">
+      <h1>Join Our Team</h1>
+      <p>Build your career with a global leader in kitchen utensil manufacturing</p>
+    </div>
+</section>
+
+<div class="careers-container">
+  <div class="careers-intro">
+    <h2>Work With Us</h2>
+    <p>
+      At Utensia, we're always looking for talented and passionate individuals to join our team. 
+      We offer competitive salaries, comprehensive benefits, and a supportive work environment 
+      that encourages innovation and professional growth.
+    </p>
+  </div>
+
+  <div class="vacancies-section">
+    <h2>Current Vacancies</h2>
+    <ul class="career-list">
+      <li>
+        <h3>Sales Representative</h3>
+        <p>Drive sales and build client relationships for our premium kitchenware products.</p>
+        <button class="apply-btn">Apply Now</button>
+      </li>
+      <li>
+        <h3>Assistant Manager</h3>
+        <p>Support operations management and oversee team productivity in our production facility.</p>
+        <button class="apply-btn">Apply Now</button>
+      </li>
+      <li>
+        <h3>Spot Welding Machine Operator</h3>
+        <p>Operate and maintain spot welding machinery to ensure high-quality production standards.</p>
+        <button class="apply-btn">Apply Now</button>
+      </li>
+      <li>
+        <h3>CNC Operator</h3>
+        <p>Program and operate CNC machines to fabricate precision components for our products.</p>
+        <button class="apply-btn">Apply Now</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<section class="benefits-section">
+  <div class="benefits-content">
+    <h2>Benefits of Working at Utensia</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <h3>Competitive Salary</h3>
+        <p>We offer industry-leading compensation packages for all positions.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Health Insurance</h3>
+        <p>Comprehensive health coverage for you and your family.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Professional Development</h3>
+        <p>Ongoing training opportunities to advance your skills and career.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Work-Life Balance</h3>
+        <p>Flexible schedules and generous time-off policies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contactbanner">
+    <h2>Ready to take the next step in your career?</h2>
+    <div class="contactbannerbttn">
+      <button class="pbutton">Submit Your Resume</button>
+      <button class="sbutton">Contact HR</button>
+    </div>
+</section>
+<br>
+<br>
+<footer>
+    <p>&copy; 2025 UTENSIA Manufacturing Inc. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+    <div class="socialmedia">
+      <a href="#"><img src="{% static 'Icons/Facebook Icon.png' %}" alt="Facebook"></a>
+      <a href="#"><img src="{% static 'Icons/Instagram icon.png' %}" alt="Instagram"></a>
+      <a href="#"><img src="{% static 'Icons/LinkedIn Icon.png' %}" alt="LinkedIn"></a>
+      <a href="#"><img src="{% static 'Icons/Twitter icon.png' %}" alt="Twitter"></a>
+    </div>
+</footer>
+
+{% endblock %}

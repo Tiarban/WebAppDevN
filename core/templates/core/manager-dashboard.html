@@ -1,4 +1,4 @@
-{# templates/manager-dashboard.html #}
+{# templates/core/manager-dashboard.html #}
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Dashboard{% endblock %}
@@ -8,60 +8,50 @@
 {% block navbar_title %}Dashboard{% endblock %}
 
 <h1>Hey Manager!</h1>
+
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div class="Statustile">
-    <div class="card"><div class="status">Ok</div><div class="workingfine"><h1>03</h1></div></div>
-    <div class="card"><div class="status">Warning</div><div class="inwarning"><h1>02</h1></div></div>
-    <div class="card"><div class="status">Fault</div><div class="underfault"><h1>06</h1></div></div>
+    <div class="card"><div class="status">Ok</div><div class="workingfine"><h1>{{ ok_count }}</h1></div></div>
+    <div class="card"><div class="status">Warning</div><div class="inwarning"><h1>{{ warning_count }}</h1></div></div>
+    <div class="card"><div class="status">Fault</div><div class="underfault"><h1>{{ fault_count }}</h1></div></div>
 </div>
 <div class="listofmachines">
     <h2>List of Machines</h2>
-    <button class="generatebutton">Generate Report</button>
+    <div>
+        <a href="{% url 'add-machine' %}" class="generatebutton" style="margin-right: 10px;">Add Machine</a>
+        <a href="{% url 'generate-report' %}" class="generatebutton">Generate Report</a>
+    </div>
 </div>
 <table>
     <thead>
         <tr><th>Machine Code</th><th>Machine Name</th><th>Status</th><th>Update</th><th>Warning</th><th>Action</th></tr>
     </thead>
     <tbody>
+        {% for machine in machines %}
         <tr>
-            <td>#3454</td>
-            <td>Lathe</td>
-            <td class="warning">Warning</td>
-            <td>Under Repair</td>
-            <td>Don't Use</td>
-            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+            <td>#{{ machine.code }}</td>
+            <td>{{ machine.name }}</td>
+            <td class="{{ machine.status }}">{{ machine.get_status_display }}</td>
+            <td>{{ machine.update_text }}</td>
+            <td>{{ machine.warning_text|default:"None" }}</td>
+            <td><a href="{% url 'machine-detail' machine_id=machine.id %}" class="viewbutton">View</a></td>
         </tr>
+        {% empty %}
         <tr>
-            <td>#3454</td>
-            <td>Lathe</td>
-            <td class="warning">Warning</td>
-            <td>Under Repair</td>
-            <td>Don't Use</td>
-            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
+            <td colspan="6" style="text-align: center;">No machines found. Please add machines to the system.</td>
         </tr>
-        <tr>
-            <td>#3454</td>
-            <td>Lathe</td>
-            <td class="warning">Warning</td>
-            <td>Under Repair</td>
-            <td>Don't Use</td>
-            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
-        </tr>
-        <tr>
-            <td>#3454</td>
-            <td>Lathe</td>
-            <td class="warning">Warning</td>
-            <td>Under Repair</td>
-            <td>Don't Use</td>
-            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
-        </tr>
-        <tr>
-            <td>#3454</td>
-            <td>Lathe</td>
-            <td class="warning">Warning</td>
-            <td>Under Repair</td>
-            <td>Don't Use</td>
-            <td><a href="{% url 'machine-detail' machine_id=3454 %}" class="viewbutton">View</a></td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
+
+
+
+

@@ -18,10 +18,38 @@
     <span class="close-btn" onclick="closeMenu()">×</span>
   </div>
   <div class="sidebar-links">
-    <a href="{% url 'manager' %}">Dashboard</a>
-    <a href="{% url 'assign-tech' %}">Assign Technician</a>
-    <a href="{% url 'raise-ticket' %}">Raise Ticket</a>
-    <a href="{% url 'login' %}">Logout</a>
+    {% if user.is_authenticated %}
+      {% if user.user_type == 'manager' %}
+        <!-- Manager-specific links -->
+        <a href="{% url 'manager' %}">Dashboard</a>
+        <a href="{% url 'assign-tech' %}">Assign Technician</a>
+        <a href="{% url 'add-machine' %}">Add Machine</a>
+        <a href="{% url 'generate-report' %}">Generate Report</a>
+        
+      {% elif user.user_type == 'technician' %}
+        <!-- Technician-specific links -->
+        <a href="{% url 'technician' %}">Dashboard</a>
+      {% elif user.user_type == 'admin' %}
+        <!-- Admin-specific links -->
+        <a href="{% url 'manager' %}">Dashboard</a>
+        <a href="{% url 'assign-tech' %}">Assign Technician</a>
+        <a href="{% url 'add-machine' %}">Add Machine</a>
+        <a href="{% url 'generate-report' %}">Generate Report</a>
+        <a href="/admin/" target="_blank">Admin Panel</a>
+      {% endif %}
+      
+      <!-- Common links for authenticated users -->
+      <a href="{% url 'raise-ticket' %}">Raise Ticket</a>
+      <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <!-- Links for unauthenticated users -->
+      <a href="{% url 'homepage' %}">Home</a>
+      <a href="{% url 'about' %}">About Us</a>
+      <a href="{% url 'products' %}">Products</a>
+      <a href="{% url 'careers' %}">Careers</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'login' %}">Login</a>
+    {% endif %}
   </div>
 </div>
 

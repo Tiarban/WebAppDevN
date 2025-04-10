@@ -10,10 +10,10 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'careers' %}">Careers</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
       </ul>
     </nav>
     <a href="{% url 'login' %}"><button class="logbtn">Login</button></a>
@@ -22,7 +22,8 @@
 <section class="Banner">
     <div class="bannerdetails">
       <h1>"Precision Tools for Every Kitchen"<br/>Engineered with care. Backed by technology</h1>
-      <button class="pbutton">View All Products</button>
+      <button class="pbutton" onclick="location.href='{% url 'products' %}'">View All Products</button>
+
     </div>
 </section>
 
@@ -42,7 +43,7 @@
         <div class="overlay">Storage</div>
       </div>
     </div>
-    <button class="sbutton">View All Products</button>
+    <button class="pbutton" onclick="location.href='{% url 'products' %}'">View All Products</button>
 </section>
 
 <section class="whychooseus">
@@ -55,8 +56,10 @@
 <section class="contactbanner">
     <h2>Want to join our team or become a partner?</h2>
     <div class="contactbannerbttn">
-      <button class="pbutton">Explore Careers</button>
-      <button class="sbutton">Contact Us</button>
+      <button class="pbutton" onclick="location.href='{% url 'careers' %}'">Explore Careers</button>
+      <button class="sbutton" onclick="location.href='{% url 'contact' %}'">Contact Us</button>
+
+
     </div>
 </section>
 <br>

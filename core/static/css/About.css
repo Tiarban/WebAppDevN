@@ -1,0 +1,94 @@
+/* static/css/about.css */
+
+/* About hero section */
+.about-hero {
+  background: url('../images/about-hero.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+  margin-bottom: 50px;
+}
+
+.about-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.about-hero-content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* About container */
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* CEO Profile Section */
+.ceo-profile {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ceo-profile img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+}
+
+.ceo-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* About Content Section */
+.about-content {
+  flex: 2;
+  min-width: 300px;
+}
+
+.about-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* Navigation active state */
+.main-navbar nav ul li a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+      flex-direction: column;
+  }
+  
+  .about-hero {
+      padding: 80px 20px;
+  }
+  
+  .about-hero-content h1 {
+      font-size: 2.5rem;
+  }
+}

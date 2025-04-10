@@ -1,0 +1,198 @@
+{# templates/core/products.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Products | Utensia{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+{% block content %}
+
+<header class="main-navbar">
+    <div class="logo"><img src="{% static 'Logo/Utensia.png' %}" height="60px" width="60px"></div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'products' %}" class="active">Products</a></li>
+        <li><a href="{% url 'careers' %}">Careers</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="{% url 'login' %}"><button class="logbtn">Login</button></a>
+</header>
+
+<section class="products-hero">
+    <div class="products-hero-content">
+      <h1>Our Products</h1>
+      <p>Quality kitchen utensils for every culinary need</p>
+    </div>
+</section>
+
+<div class="products-container">
+  <div class="category-filter">
+    <h2>Categories</h2>
+    <ul>
+      <li><a href="#" class="active">All Products</a></li>
+      <li><a href="#">Cutlery</a></li>
+      <li><a href="#">Cookware</a></li>
+      <li><a href="#">Appliances</a></li>
+      <li><a href="#">Storage</a></li>
+    </ul>
+  </div>
+
+  <div class="products-grid-container">
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/spoons.jpeg' %}" alt="Spoons">
+        </div>
+        <h3>Spoons</h3>
+        <p class="product-description">Premium stainless steel spoons for everyday use</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/forks.jpeg' %}" alt="Forks">
+        </div>
+        <h3>Forks</h3>
+        <p class="product-description">Durable and elegant dining forks</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/chefs-knives.jpeg' %}" alt="Chef's Knives">
+        </div>
+        <h3>Chef's Knives</h3>
+        <p class="product-description">Professional-grade chef knives for precise cutting</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/butchers-knives.jpeg' %}" alt="Butcher's Knives">
+        </div>
+        <h3>Butcher's Knives</h3>
+        <p class="product-description">Heavy-duty knives for meat preparation</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/household-woks.jpeg' %}" alt="Household Woks">
+        </div>
+        <h3>Household Woks</h3>
+        <p class="product-description">Non-stick woks for home cooking</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/industrial-wok.jpeg' %}" alt="Industrial Woks">
+        </div>
+        <h3>Industrial Woks</h3>
+        <p class="product-description">Commercial-grade woks for restaurants</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/plates.jpeg' %}" alt="Plates">
+        </div>
+        <h3>Plates</h3>
+        <p class="product-description">Elegant dining plates in various designs</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/pans.jpeg' %}" alt="Pans">
+        </div>
+        <h3>Pans</h3>
+        <p class="product-description">Multi-purpose cooking pans</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/iron-skillet.jpeg' %}" alt="Iron Skillet">
+        </div>
+        <h3>Iron Skillet</h3>
+        <p class="product-description">Traditional cast iron skillets</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/glass bowl.jpeg' %}" alt="Glass Bowls">
+        </div>
+        <h3>Glass Bowls</h3>
+        <p class="product-description">Clear glass bowls for serving and mixing</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/crockery-bowls.jpeg' %}" alt="Crockery Bowls">
+        </div>
+        <h3>Crockery Bowls</h3>
+        <p class="product-description">Ceramic bowls for everyday use</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{% static 'images/spatulas.jpeg' %}" alt="Spatulas">
+        </div>
+        <h3>Spatulas</h3>
+        <p class="product-description">Heat-resistant silicone spatulas</p>
+        <button class="view-product-btn">View Details</button>
+      </div>
+    </div>
+    
+    <div class="pagination">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next »</a>
+    </div>
+  </div>
+</div>
+
+<section class="featured-products">
+  <div class="featured-container">
+    <h2>Featured Collections</h2>
+    <div class="featured-grid">
+      <div class="featured-item">
+        <img src="{% static 'images/premium collection.jpg' %}" alt="Premium Collection">
+        <div class="featured-text">
+          <h3>Premium Collection</h3>
+          <p>Our finest craftsmanship for discerning chefs</p>
+          <a href="#" class="featured-btn">Explore</a>
+        </div>
+      </div>
+      <div class="featured-item">
+        <img src="{% static 'images/professional set.jpg' %}" alt="Professional Set">
+        <div class="featured-text">
+          <h3>Professional Series</h3>
+          <p>Commercial-grade tools for restaurants</p>
+          <a href="#" class="featured-btn">Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 UTENSIA Manufacturing Inc. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+    <div class="socialmedia">
+      <a href="#"><img src="{% static 'Icons/Facebook Icon.png' %}" alt="Facebook"></a>
+      <a href="#"><img src="{% static 'Icons/Instagram icon.png' %}" alt="Instagram"></a>
+      <a href="#"><img src="{% static 'Icons/LinkedIn Icon.png' %}" alt="LinkedIn"></a>
+      <a href="#"><img src="{% static 'Icons/Twitter icon.png' %}" alt="Twitter"></a>
+    </div>
+</footer>
+
+{% endblock %}

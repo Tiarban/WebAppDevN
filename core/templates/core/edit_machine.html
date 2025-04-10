@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Edit Machine{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/raise-ticket.css' %}">{% endblock %}
+{% block content %}
+{% include 'core/navbar.html' %}
+{% block navbar_title %}Edit Machine{% endblock %}
+
+<div class="container">
+  <h2>Edit Machine: {{ machine.name }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_code">Machine Code</label>
+      {{ form.code }}
+      {% if form.code.errors %}
+        <div class="error">{{ form.code.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_name">Machine Name</label>
+      {{ form.name }}
+      {% if form.name.errors %}
+        <div class="error">{{ form.name.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_description">Description</label>
+      {{ form.description }}
+      {% if form.description.errors %}
+        <div class="error">{{ form.description.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_status">Status</label>
+      {{ form.status }}
+      {% if form.status.errors %}
+        <div class="error">{{ form.status.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_image">Machine Image</label>
+      {% if machine.image %}
+        <div>Current image: <img src="{{ machine.image.url }}" style="max-width: 100px; margin-bottom: 10px"></div>
+      {% endif %}
+      {{ form.image }}
+      {% if form.image.errors %}
+        <div class="error">{{ form.image.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="buttons">
+      <button type="submit" class="btn submit-btn">Update Machine</button>
+      <a href="{% url 'machine-detail' machine_id=machine.id %}" class="btn cancel-btn">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

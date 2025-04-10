@@ -1,57 +1,58 @@
-{# templates/assign-tech.html #}
+{# templates/core/assign-tech.html #}
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Assign to Technician{% endblock %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/assign-tech.css' %}">
-{% endblock %}
-
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/assign-tech.css' %}">{% endblock %}
 {% block content %}
 {% include 'core/navbar.html' %}
 {% block navbar_title %}Assign Technician{% endblock %}
 
 <div class="container">
   <h2>Assign to Technician</h2>
-  <form id="assignForm">
-      <div class="form-group">
-          <label for="machine">Machine Name</label>
-          <input type="text" id="machine" placeholder="Enter Machine Name" required>
-      </div>
-      <div class="form-group">
-          <label for="technician">Assign To</label>
-          <select id="technician" required>
-              <option value="">Select Technician</option>
-              <option value="tech1">Technician 1</option>
-              <option value="tech2">Technician 2</option>
-              <option value="tech3">Technician 3</option>
-              <option value="tech4">Technician 4</option>
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="notes">Notes to Technician</label>
-          <textarea id="notes" rows="4" placeholder="Enter notes here..."></textarea>
-      </div>
-      <div class="form-group">
-          <label>Upload Image</label>
-          <input type="file">
-      </div>
-      <div class="buttons">
-          <button type="submit" class="btn submit-btn">Submit</button>
-          <button type="button" class="btn cancel-btn" onclick="resetForm()">Cancel</button>
-      </div>
+  
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <form id="assignForm" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if ticket_id %}<input type="hidden" name="ticket_id" value="{{ ticket_id }}">{% endif %}
+    <div class="form-group">
+      <label for="id_machine">Machine</label>
+      {{ form.machine }}
+      {% if form.machine.errors %}
+        <div class="error">{{ form.machine.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_technician">Assign To</label>
+      {{ form.technician }}
+      {% if form.technician.errors %}
+        <div class="error">{{ form.technician.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_notes">Notes to Technician</label>
+      {{ form.notes }}
+      {% if form.notes.errors %}
+        <div class="error">{{ form.notes.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_image">Upload Image</label>
+      {{ form.image }}
+      {% if form.image.errors %}
+        <div class="error">{{ form.image.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="buttons">
+      <button type="submit" class="btn submit-btn">Submit</button>
+      <a href="javascript:history.back()" class="btn cancel-btn">Cancel</a>
+    </div>
   </form>
 </div>
-{% endblock %}
-
-{% block extra_scripts %}
-<script>
-    document.getElementById("assignForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        alert("Form submitted successfully!");
-        this.reset();
-    });
-    function resetForm() {
-        document.getElementById("assignForm").reset();
-    }
-</script>
 {% endblock %}

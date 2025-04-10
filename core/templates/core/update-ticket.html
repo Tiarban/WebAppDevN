@@ -1,0 +1,99 @@
+{# templates/core/update-ticket.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Update Ticket{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/raise-ticket.css' %}">{% endblock %}
+{% block content %}
+{% include 'core/navbar.html' %}
+{% block navbar_title %}Update Ticket{% endblock %}
+
+<div class="container">
+  <h2>Update Ticket: {{ ticket.fault_code }}</h2>
+  
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <div class="ticket-info">
+    <div class="row">
+      <div class="column">
+        <p><strong>Machine:</strong> {{ ticket.machine.name }}</p>
+        <p><strong>Status:</strong> <span class="status-{{ ticket.status }}">{{ ticket.get_status_display }}</span></p>
+      </div>
+      <div class="column">
+        <p><strong>Reported by:</strong> {{ ticket.created_by.first_name }} {{ ticket.created_by.last_name }}</p>
+        <p><strong>Date:</strong> {{ ticket.created_at|date:"d/m/Y" }}</p>
+      </div>
+    </div>
+    <p><strong>Title:</strong> {{ ticket.title }}</p>
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    {% if ticket.image %}
+    <p><strong>Image:</strong><br>
+      <img src="{{ ticket.image.url }}" alt="Ticket Image" style="max-width: 100%; max-height: 300px;">
+    </p>
+    {% endif %}
+    
+    {% if ticket.assigned_to %}
+    <p><strong>Assigned to:</strong> {{ ticket.assigned_to.first_name }} {{ ticket.assigned_to.last_name }}</p>
+    {% else %}
+    <p><strong>Assigned to:</strong> Not assigned</p>
+    {% if user.user_type == 'manager' %}
+    <a href="{% url 'assign-tech' %}?ticket_id={{ ticket.id }}&machine_id={{ ticket.machine.id }}" class="btn submit-btn" style="margin-bottom: 20px; display: inline-block;">Assign Technician</a>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <h3>Update History</h3>
+  <div class="updates-list">
+    {% for update in updates %}
+    <div class="update-item">
+      <p class="update-time">{{ update.created_at|date:"d/m/Y H:i" }} by {{ update.user.first_name }}</p>
+      <p class="update-text">{{ update.update_text }}</p>
+      {% if update.image %}
+      <img src="{{ update.image.url }}" alt="Update Image" style="max-width: 100%; max-height: 200px;">
+      {% endif %}
+    </div>
+    {% empty %}
+    <p>No updates yet.</p>
+    {% endfor %}
+  </div>
+
+  <h3>Add Update</h3>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_update_text">Update Notes</label>
+      {{ form.update_text }}
+      {% if form.update_text.errors %}
+        <div class="error">{{ form.update_text.errors }}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="id_image">Upload Image (Optional)</label>
+      {{ form.image }}
+      {% if form.image.errors %}
+        <div class="error">{{ form.image.errors }}</div>
+      {% endif %}
+    </div>
+    {% if user.user_type == 'manager' or user.user_type == 'technician' %}
+    <div class="form-group">
+      <label for="id_ticket_status">Update Status</label>
+      <select name="ticket_status" id="id_ticket_status" class="form-control">
+        <option value="">-- Keep Current Status --</option>
+        {% for key, value in ticket.STATUS_CHOICES %}
+        <option value="{{ key }}" {% if ticket.status == key %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+    <div class="buttons">
+      <button type="submit" class="btn submit-btn">Submit Update</button>
+      <a href="{% url 'machine-detail' machine_id=ticket.machine.id %}" class="btn cancel-btn">Back to Machine</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

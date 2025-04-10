@@ -1,85 +1,70 @@
-{# templates/technician-dashboard.html #}
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Technician Dashboard{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/technician.css' %}">{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/technician.css' %}">
+{% endblock %}
+
 {% block content %}
 {% include 'core/navbar.html' %}
 {% block navbar_title %}Technician Dashboard{% endblock %}
 
-<h1>Hey Technician</h1>
+<div class="tech-dashboard-container">
+  <h1>Hey Technician!</h1>
 
-<div class="fault-cards" id="faultCardsContainer"></div>
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
-<div class="table-section">
+  <h2>Assigned Machines</h2>
+  
+  <!-- Fault Cards - Similar to the layout in the screenshot -->
+  <div class="fault-cards">
+    {% for ticket in tickets %}
+    <div class="fault-card">
+      <p><strong>Fault Code</strong>: {{ ticket.fault_code }}</p>
+      <p><strong>Machine Name</strong>: {{ ticket.machine.name }}</p>
+      <p><strong>Date</strong>: {{ ticket.created_at|date:"d/m/Y" }}</p>
+      <p><strong>Status</strong>: <span class="status-{{ ticket.status }}">{{ ticket.get_status_display }}</span></p>
+      <p><strong>Update</strong>: Machine Not Working</p>
+    </div>
+    {% empty %}
+    <p>No open tickets assigned to you.</p>
+    {% endfor %}
+  </div>
+
   <h2>List of Machines</h2>
-  <table id="machineTable">
-    <thead>
-      <tr>
-        <th>Machine Code</th>
-        <th>Machine Name</th>
-        <th>Status</th>
-        <th>Update</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Table rows will be populated by JavaScript -->
-    </tbody>
-  </table>
+  <div class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>Machine Code</th>
+          <th>Machine Name</th>
+          <th>Status</th>
+          <th>Update</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for machine in machines %}
+        <tr>
+          <td>#{{ machine.code }}</td>
+          <td>{{ machine.name }}</td>
+          <td class="{{ machine.status }}">{{ machine.get_status_display }}</td>
+          <td>{{ machine.update_text }}</td>
+          <td><a href="{% url 'machine-detail' machine_id=machine.id %}" class="view-btn">View</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" style="text-align: center;">No machines assigned to you yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-
-{% endblock %}
-
-{% block extra_scripts %}
-<script>
-  // Sample data for the machines
-  const machines = [
-    { code: '#M001', name: 'Laser CNC Cutter', status: 'warning', update: 'Needs calibration' },
-    { code: '#M002', name: 'Hydraulic Press', status: 'fault', update: 'Oil leakage detected' },
-    { code: '#M003', name: 'Gas Welding', status: 'warning', update: 'Low gas pressure' },
-    { code: '#M004', name: 'Spot Welding', status: 'ok', update: 'Operational' },
-    { code: '#M005', name: 'Polishing', status: 'fault', update: 'Motor failure' },
-    { code: '#M006', name: 'Packaging', status: 'ok', update: 'Fully functional' },
-  ];
-
-  // Get references to the DOM elements
-  const machineTable = document.getElementById('machineTable');
-  const faultCards = document.getElementById('faultCardsContainer');
-
-  // Populate the table and fault cards
-  machines.forEach(machine => {
-    // Create table row
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${machine.code}</td>
-      <td>${machine.name}</td>
-      <td class="status-${machine.status}">${machine.status.toUpperCase()}</td>
-      <td>${machine.update}</td>
-      <td><button class="view-btn">View</button></td>
-    `;
-    machineTable.querySelector('tbody').appendChild(row);
-
-    // Create fault card for non-OK machines
-    if (machine.status !== 'ok') {
-      const card = document.createElement('div');
-      card.className = 'fault-card';
-      card.innerHTML = `
-        <p><strong>Machine Code:</strong> ${machine.code}</p>
-        <p><strong>Machine:</strong> ${machine.name}</p>
-        <p class="status status-${machine.status}">${machine.status.toUpperCase()}</p>
-        <p><strong>Update:</strong> ${machine.update}</p>
-      `;
-      faultCards.appendChild(card);
-    }
-  });
-
-  // Add event listeners to view buttons
-  document.querySelectorAll('.view-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      // This would typically navigate to a machine detail page
-      alert('View machine details');
-    });
-  });
-</script>
 {% endblock %}

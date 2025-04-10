@@ -1,4 +1,4 @@
-{# templates/machine-detail.html - updated to match design #}
+{# templates/core/machine-detail.html #}
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Machine Details{% endblock %}
@@ -8,21 +8,41 @@
 {% block navbar_title %}Machine Details{% endblock %}
 
 <main>
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
   <section class="machine-details">
     <div class="image">
-      <img src="{% static 'images/Machine.png' %}" alt="Machine Image">
+      {% if machine.image %}
+        <img src="{{ machine.image.url }}" alt="{{ machine.name }}">
+      {% else %}
+        <img src="{% static 'images/Machine.png' %}" alt="Machine Image">
+      {% endif %}
     </div>
     <div class="details">
-      <h2>Machine Name</h2>
-      <p>
-        The PFM-5000 is a high-performance automatic machine designed for the efficient and consistent production of high-quality frying pans. Engineered for precision and speed, it handles the entire process from metal sheet forming to non-stick coating application. Perfect for large-scale cookware manufacturing units aiming to boost productivity and maintain product consistency.
-      </p>
-      <p><strong>Status</strong><br><span class="status-ok">OK</span></p>
-      <p><strong>Update</strong><br><span class="update-text">Working Fine</span></p>
+      <h2>{{ machine.name }}</h2>
+      <p>{{ machine.description }}</p>
+      <p><strong>Status</strong><br><span class="status-{{ machine.status }}">{{ machine.get_status_display }}</span></p>
+      <p><strong>Update</strong><br><span class="update-text">{{ machine.update_text }}</span></p>
 
       <div class="addwarning">
-        <button>Add Warning</button>
+        <a href="{% url 'add-warning' machine_id=machine.id %}">
+          <button>Add Warning</button>
+        </a>
       </div>
+      
+      {% if user.user_type == 'manager' %}
+      <div class="addwarning" style="margin-top: 10px;">
+        <a href="{% url 'edit-machine' machine_id=machine.id %}">
+          <button>Edit Machine</button>
+        </a>
+      </div>
+      {% endif %}
     </div>
   </section>
 
@@ -30,7 +50,7 @@
     <div class="tableheader">
       <h3>History of Faults</h3>
       <div class="raise-ticket">
-        <a href="{% url 'raise-ticket' %}" class="raise-ticket-btn">Raise Ticket</a>
+        <a href="{% url 'raise-ticket' %}?machine_id={{ machine.id }}" class="raise-ticket-btn">Raise Ticket</a>
       </div>
     </div>
       
@@ -46,30 +66,34 @@
         </tr>
       </thead>
       <tbody>
+        {% for ticket in tickets %}
         <tr>
-          <td>#FC252634</td>
-          <td>Lathe</td>
-          <td>03/02/2025</td>
-          <td class="status-ok">Ok</td>
-          <td>Resolved</td>
-          <td><button class="view-btn">View</button></td>
+          <td>{{ ticket.fault_code }}</td>
+          <td>{{ ticket.machine.name }}</td>
+          <td>{{ ticket.created_at|date:"d/m/Y" }}</td>
+          <td class="status-{{ ticket.status }}">{{ ticket.get_status_display }}</td>
+          <td>
+            {% with last_update=ticket.updates.first %}
+              {% if last_update %}
+                {{ last_update.update_text|truncatechars:30 }}
+              {% else %}
+                {% if ticket.status == 'open' %}Awaiting Assignment
+                {% elif ticket.status == 'assigned' %}Assigned to {{ ticket.assigned_to.first_name }}
+                {% elif ticket.status == 'in_progress' %}In Progress
+                {% elif ticket.status == 'resolved' %}Resolved
+                {% elif ticket.status == 'closed' %}Closed
+                {% else %}{{ ticket.status|title }}
+                {% endif %}
+              {% endif %}
+            {% endwith %}
+          </td>
+          <td><a href="{% url 'update-ticket' ticket_id=ticket.id %}" class="view-btn">View</a></td>
         </tr>
+        {% empty %}
         <tr>
-          <td>#FC252634</td>
-          <td>Lathe</td>
-          <td>03/02/2025</td>
-          <td class="status-ok">Ok</td>
-          <td>Resolved</td>
-          <td><button class="view-btn">View</button></td>
+          <td colspan="6" style="text-align:center;">No fault history found for this machine.</td>
         </tr>
-        <tr>
-          <td>#FC252634</td>
-          <td>Lathe</td>
-          <td>03/02/2025</td>
-          <td class="status-ok">Ok</td>
-          <td>Resolved</td>
-          <td><button class="view-btn">View</button></td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </section>

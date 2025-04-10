@@ -1,0 +1,73 @@
+{# templates/core/about.html #}
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}About Us | Utensia{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block content %}
+
+<header class="main-navbar">
+    <div class="logo"><img src="{% static 'Logo/Utensia.png' %}" height="60px" width="60px"></div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="{% url 'about' %}" class="active">About Us</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'careers' %}">Careers</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="{% url 'login' %}"><button class="logbtn">Login</button></a>
+</header>
+
+<section class="about-hero">
+    <div class="about-hero-content">
+      <h1>Our Story</h1>
+      <p>Crafting precision kitchen tools since 1974</p>
+    </div>
+</section>
+
+<div class="about-container">
+  <!-- CEO Profile Section -->
+  <div class="ceo-profile">
+    <img src="{% static 'images/gusfring.jpg' %}" alt="CEO Image" />
+    <p class="ceo-name">CEO - Gustavo Fring</p>
+  </div>
+  
+  <!-- About Content Section -->
+  <div class="about-content">
+    <h2>Our History</h2>
+    <p>
+      Utensia began manufacturing kitchen utensils in 1974. Our organization has spent 51 years focusing on designing products that use functionality and durability along with stylish elements leading to our diverse product range. Our inception as a small workshop focused on kitchenware craftsmanship development now operates as a big-scale facility dedicated to broad culinary requirements.
+    </p>
+    <p>
+      Our group of designers along with craftsmen combine modern technologies with traditional manufacturing techniques to produce products which address the changing demands of our customers. Our commitment to innovation along with our love for premium quality extends into every product we manufacture which includes basic spoons and advanced household appliances. The manufacturing process at our company maintains precision efficiency but goes beyond basic manufacturing to appreciate culinary arts which motivates exceptional kitchen performance.
+    </p>
+    <p>
+      Our company maintains great pride in its historical traditions yet refuses to settle at its current achievements. Forward-thinking direction inspires our continuous research and development effort for developing new products which establish industry standards. The company aims to provide every domestic setting with kitchen tools that enhance both cooking experience and efficiency along with inspiring creativity all while achieving exceptional manufacturing standards and ethical business conduct.
+    </p>
+  </div>
+</div>
+
+<section class="contactbanner">
+    <h2>Want to join our team or become a partner?</h2>
+    <div class="contactbannerbttn">
+      <button class="pbutton">Explore Careers</button>
+      <button class="sbutton">Contact Us</button>
+    </div>
+</section>
+<br>
+<br>
+<footer>
+    <p>&copy; 2025 UTENSIA Manufacturing Inc. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+    <div class="socialmedia">
+      <a href="#"><img src="{% static 'Icons/Facebook Icon.png' %}" alt="Facebook"></a>
+      <a href="#"><img src="{% static 'Icons/Instagram icon.png' %}" alt="Instagram"></a>
+      <a href="#"><img src="{% static 'Icons/LinkedIn Icon.png' %}" alt="LinkedIn"></a>
+      <a href="#"><img src="{% static 'Icons/Twitter icon.png' %}" alt="Twitter"></a>
+    </div>
+</footer>
+
+{% endblock %}
