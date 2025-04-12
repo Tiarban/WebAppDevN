@@ -12,6 +12,7 @@
 .about-hero-content h1 {
   font-size: 3rem;
   margin-bottom: 15px;
+  color: black;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
@@ -20,6 +21,7 @@
   max-width: 600px;
   margin: 0 auto;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  color: black;
 }
 
 /* About container */

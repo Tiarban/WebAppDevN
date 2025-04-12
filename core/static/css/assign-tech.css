@@ -171,6 +171,9 @@ textarea {
   border: 2px solid #000;
   color: #000;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .cancel-btn:hover {

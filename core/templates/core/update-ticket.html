@@ -21,16 +21,16 @@
   <div class="ticket-info">
     <div class="row">
       <div class="column">
-        <p><strong>Machine:</strong> {{ ticket.machine.name }}</p>
-        <p><strong>Status:</strong> <span class="status-{{ ticket.status }}">{{ ticket.get_status_display }}</span></p>
+        <p><strong>Machine:</strong> {{ ticket.machine.name }}</p><br>
+        <p><strong>Status:</strong> <span class="status-{{ ticket.status }}">{{ ticket.get_status_display }}</span></p><br>
       </div>
       <div class="column">
-        <p><strong>Reported by:</strong> {{ ticket.created_by.first_name }} {{ ticket.created_by.last_name }}</p>
-        <p><strong>Date:</strong> {{ ticket.created_at|date:"d/m/Y" }}</p>
+        <p><strong>Reported by:</strong> {{ ticket.created_by.first_name }} {{ ticket.created_by.last_name }}</p><br>
+        <p><strong>Date:</strong> {{ ticket.created_at|date:"d/m/Y" }}</p><br>
       </div>
     </div>
-    <p><strong>Title:</strong> {{ ticket.title }}</p>
-    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Title:</strong> {{ ticket.title }}</p><br>
+    <p><strong>Description:</strong> {{ ticket.description }}</p><br>
     {% if ticket.image %}
     <p><strong>Image:</strong><br>
       <img src="{{ ticket.image.url }}" alt="Ticket Image" style="max-width: 100%; max-height: 300px;">
@@ -38,16 +38,16 @@
     {% endif %}
     
     {% if ticket.assigned_to %}
-    <p><strong>Assigned to:</strong> {{ ticket.assigned_to.first_name }} {{ ticket.assigned_to.last_name }}</p>
+    <p><strong>Assigned to:</strong> {{ ticket.assigned_to.first_name }} {{ ticket.assigned_to.last_name }}</p><br>
     {% else %}
-    <p><strong>Assigned to:</strong> Not assigned</p>
+    <p><strong>Assigned to:</strong> Not assigned</p><br>
     {% if user.user_type == 'manager' %}
     <a href="{% url 'assign-tech' %}?ticket_id={{ ticket.id }}&machine_id={{ ticket.machine.id }}" class="btn submit-btn" style="margin-bottom: 20px; display: inline-block;">Assign Technician</a>
     {% endif %}
     {% endif %}
   </div>
 
-  <h3>Update History</h3>
+  <h3>Update History</h3><br>
   <div class="updates-list">
     {% for update in updates %}
     <div class="update-item">
@@ -60,9 +60,9 @@
     {% empty %}
     <p>No updates yet.</p>
     {% endfor %}
-  </div>
+  </div><br>
 
-  <h3>Add Update</h3>
+  <h3>Add Update</h3><br>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">

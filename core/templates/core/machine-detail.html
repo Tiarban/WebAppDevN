@@ -37,7 +37,7 @@
       </div>
       
       {% if user.user_type == 'manager' %}
-      <div class="addwarning" style="margin-top: 10px;">
+      <div class="editmachine" style="margin-top: 10px;">
         <a href="{% url 'edit-machine' machine_id=machine.id %}">
           <button>Edit Machine</button>
         </a>

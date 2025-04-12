@@ -8,6 +8,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                url('../images/sbanner.png') no-repeat center center/cover;
   }
   
   .login-container {
@@ -16,8 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
-                url('../images/sbanner.png') no-repeat center center/cover;
+    
   }
   
   .login-box {

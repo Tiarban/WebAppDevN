@@ -82,7 +82,6 @@ main {
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .raise-ticket-btn:hover {
@@ -91,9 +90,18 @@ main {
 
 .addwarning button {
   padding: 10px 20px;
-  background-color: black;
+  background-color: #e63946;
   color: white;
   border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.editmachine button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 2px solid;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -136,6 +144,8 @@ td {
   padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .view-btn:hover {
