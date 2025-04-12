@@ -24,7 +24,7 @@ class TicketSerializer(serializers.ModelSerializer):
         model = Ticket
         fields = '__all__'
 
-class TicketUpdateSerlializer(serializers.ModelSerializer):
+class TicketUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = TicketUpdate
         fields = 'update_text'

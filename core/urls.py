@@ -12,6 +12,8 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'tickets', views.TicketViewSet)
+router.register(r'machines', views.MachineViewSet)
 
 urlpatterns = [
     # Authentication URLs

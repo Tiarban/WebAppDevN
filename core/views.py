@@ -8,7 +8,7 @@ from django.db.models import Count, Q
 from django.utils import timezone
 from .models import User, Machine, Ticket, TicketUpdate, TechnicianAssignment, MachineWarning
 from .forms import (
-    LoginForm, MachineForm, TicketForm, TicketUpdateForm, 
+    LoginForm, MachineForm, TicketForm, TicketUpdateForm,
     TechnicianAssignmentForm, MachineWarningForm
 )
 
@@ -16,8 +16,28 @@ from django.contrib.auth.models import Group
 
 
 from rest_framework import permissions, viewsets
+from rest_framework.decorators import action
 from core.serializers import GroupSerializer, UserSerializer
+from .serializers import TicketSerializer, TicketUpdateSerializer, MachineSerializer
 
+class TicketViewSet(viewsets.ModelViewSet):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+
+    @action(methods=['post'], url_path='update', detail=True)
+    def update_ticket(self, request, pk=None):
+        ticket= self.get_object()
+        serializer = TicketUpdateSerializer(data=request.data)
+        if serializer.is_valid():
+            # Save the update, linking it to the ticket.
+            serializer.save(ticket=ticket, user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MachineViewSet(viewsets.ModelViewSet):
+    queryset = Machine.objects.all()
+    serializer_class = MachineSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     #user api endpoint
