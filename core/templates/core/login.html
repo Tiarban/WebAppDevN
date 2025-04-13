@@ -45,8 +45,7 @@
       return false;
     }
     
-    // In a real application, you would handle form submission to the server here
-    // For demonstration purposes, redirect to manager dashboard
+
     if (email === 'manager@utensia.com' && password === 'password') {
       event.preventDefault();
       window.location.href = "{% url 'manager' %}";
